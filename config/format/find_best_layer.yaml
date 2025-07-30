@@ -1,0 +1,29 @@
+device: 'cuda'
+data_path: 'data/format/ifeval_augmented_filtered.jsonl'
+output_path: 'layer_search_out'
+dry_run: False
+
+model_name: '/home/uom/.cache/huggingface/hub/models--Qwen--Qwen3-1.7B/snapshots/0060bc56d46589041c1048efd1a397421b1142b5'
+max_generation_length: 768
+n_examples_per_instruction: 10
+
+include_instructions: True
+cross_model_steering: False
+
+transformers_cache_dir: null
+
+seed: 42
+steering: 'adjust_rs'
+steering_weight: 1.0
+representations_folder: 'all'
+
+
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
